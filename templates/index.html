@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Chatbot</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .chat-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .chat-header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .chat-messages {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      .chat-button {
+        display: block;
+        width: calc(100% - 22px);
+        margin: 10px auto;
+        padding: 10px;
+        cursor: pointer;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+      }
+      .chat-button:hover {
+        background-color: #0056b3;
+      }
+      .chat-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+      .chat-input-container {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+      }
+      .chat-input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px 0 0 5px;
+      }
+      .send-button {
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 0 5px 5px 0;
+      }
+      .send-button:hover {
+        background-color: #0056b3;
+      }
+      .send-button:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+      .selected-button {
+        background-color: #28a745;
+        color: white;
+      }
+      .user-message {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #e9ecef;
+        margin: 5px 0;
+      }
+      .help-buttons {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 10px;
+      }
+      .help-button {
+        padding: 10px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        margin: 0 5px;
+      }
+      .help-button:hover {
+        background-color: #0056b3;
+      }
+      .bold-text {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <h2>University Chatbot</h2>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <p>
+          Hi there! I am the Uni Bot, Your virtual assistant, How can I assist
+          you today?
+        </p>
+        <button
+          class="chat-button"
+          id="button1"
+          onclick="sendMessage(1, 'Entry Requirements and Pathways')"
+        >
+          Entry Requirements and Pathways
+        </button>
+        <button
+          class="chat-button"
+          id="button2"
+          onclick="sendMessage(2, 'Course Information')"
+        >
+          Course Information
+        </button>
+        <button
+          class="chat-button"
+          id="button3"
+          onclick="sendMessage(3, 'Fees and Costs')"
+        >
+          Fees and Costs
+        </button>
+      </div>
+      <div class="chat-input-container">
+        <input
+          type="text"
+          class="chat-input"
+          id="chat-input"
+          placeholder="Type your message here..."
+          onkeydown="checkEnter(event)"
+          oninput="validateInput()"
+        />
+        <button
+          class="send-button"
+          id="send-button"
+          onclick="sendMessage()"
+          disabled
+        >
+          Send
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function sendMessage(option, label) {
+        const input = option
+          ? label
+          : document.getElementById('chat-input').value;
+        const chatMessages = document.getElementById('chat-messages');
+
+        if (option) {
+          const button = document.getElementById(`button${option}`);
+          button.classList.add('selected-button');
+          button.disabled = true;
+          chatMessages.innerHTML += `<p>You: <button class="user-message">${input}</button></p>`;
+        } else {
+          chatMessages.innerHTML += `<p>You: ${input}</p>`;
+          option = getOptionFromInput(input);
+        }
+
+        fetch('/chatbot', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: option ? option.toString() : input.toString(),
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            chatMessages.innerHTML += `<p>${data.response}</p>`;
+            askForMoreHelp();
+          })
+          .catch((error) => {
+            chatMessages.innerHTML += `<p>Something went wrong. Please try again.</p>`;
+            askForMoreHelp();
+          });
+
+        document.getElementById('chat-input').value = '';
+        validateInput(); // Disable button again after sending
+      }
+
+      function checkEnter(event) {
+        if (
+          event.key === 'Enter' &&
+          !document.getElementById('send-button').disabled
+        ) {
+          sendMessage();
+        }
+      }
+
+      function validateInput() {
+        const input = document.getElementById('chat-input').value;
+        document.getElementById('send-button').disabled = input.length < 3;
+      }
+
+      function getOptionFromInput(input) {
+        const lowerInput = input.toLowerCase();
+        if (lowerInput.includes('entry requirements and pathways')) return 1;
+        if (lowerInput.includes('course information')) return 2;
+        if (
+          lowerInput.includes('fees and costs') ||
+          lowerInput.includes('fee and costs')
+        )
+          return 3;
+        return null;
+      }
+
+      function askForMoreHelp() {
+        const chatMessages = document.getElementById('chat-messages');
+        chatMessages.innerHTML += `
+                <p class="bold-text">Do you need more help?</p>
+                <div class="help-buttons">
+                    <button class="help-button" onclick="handleHelpResponse('no')">No</button>
+                    <button class="help-button" onclick="handleHelpResponse('yes')">Yes</button>
+                </div>
+            `;
+      }
+
+      function handleHelpResponse(response) {
+        const chatMessages = document.getElementById('chat-messages');
+        if (response === 'no') {
+          chatMessages.innerHTML += `<p>Thank you for using the Uni Bot</p>`;
+        } else {
+          chatMessages.innerHTML += `<p>What else I can assist you?</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
