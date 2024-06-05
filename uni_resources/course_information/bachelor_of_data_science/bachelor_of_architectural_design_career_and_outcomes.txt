@@ -1,0 +1,88 @@
+Bachelor of Data Science
+
+Course Overview
+
+The Bachelor of Data Science is an innovative and interdisciplinary program designed to equip students with the skills and knowledge necessary to extract meaningful insights from vast amounts of data. As the demand for data-driven decision-making continues to grow across various industries, this degree prepares graduates to meet the challenges and opportunities in the evolving field of data science.
+
+Course Structure
+
+The course typically spans three to four years of full-time study, comprising core units, elective units, and a capstone project. The curriculum is designed to provide a balanced mix of theoretical foundations and practical skills in data science.
+
+Core Units:
+
+1. Introduction to Data Science  
+   Provides an overview of the data science lifecycle, including data collection, cleaning, analysis, and visualisation.
+
+2. Statistics and Probability  
+   Covers fundamental concepts in probability theory and statistical inference, crucial for data analysis and interpretation.
+
+3. Data Management and Warehousing  
+   Focuses on database systems, data warehousing techniques, and data retrieval methods.
+
+4. Machine Learning  
+   Introduces machine learning algorithms and their applications in predictive modelling and data analysis.
+
+5. Data Visualisation  
+   Teaches techniques for visualising data to communicate findings effectively.
+
+6. Big Data Analytics  
+   Explores tools and techniques for handling and analysing large datasets.
+
+7. Programming for Data Science  
+   Provides practical experience in programming languages commonly used in data science, such as Python and R.
+
+Elective Units:
+
+Students can choose from a range of elective units to tailor their degree to their interests and career goals. Electives may include:
+
+- Artificial Intelligence
+- Data Ethics and Governance
+- Advanced Statistical Modelling
+- Natural Language Processing
+- Cloud Computing for Data Science
+
+Capstone Project:
+
+In the final year, students undertake a capstone project, which involves working on a real-world data science problem, either individually or in teams. This project allows students to apply their knowledge and skills to practical challenges and demonstrate their competency in data science.
+
+Career Opportunities
+
+Graduates of the Bachelor of Data Science program are well-prepared for a variety of roles in both the public and private sectors. Potential career paths include:
+
+- Data Scientist
+- Data Analyst
+- Business Intelligence Analyst
+- Machine Learning Engineer
+- Data Engineer
+- Research Scientist
+
+Skills Developed
+
+Throughout the course, students will develop a range of skills, including:
+
+- Statistical analysis and interpretation
+- Programming and software development
+- Data management and processing
+- Machine learning and predictive modelling
+- Effective communication of data insights
+- Critical thinking and problem-solving
+
+Industry Relevance
+
+The course content is regularly reviewed and updated to ensure alignment with industry standards and technological advancements. Partnerships with industry leaders and opportunities for internships and work placements further enhance the practical relevance of the degree.
+
+Careers and Outcomes
+
+Upon completing the Bachelor of Data Science, graduates will be equipped with the skills and knowledge to pursue diverse career opportunities across various industries. Key outcomes for graduates include:
+
+1. Industry-Ready Skills: Graduates will possess the technical and analytical skills required to excel in data-centric roles, ensuring they are competitive in the job market.
+
+2. Adaptability: The interdisciplinary nature of the program enables graduates to adapt to different industries such as finance, healthcare, technology, and government, where data science skills are in high demand.
+
+3. Professional Growth: The strong foundation in data science principles and hands-on experience gained through the capstone project and internships prepare graduates for continuous professional development and potential leadership roles.
+
+4. Contribution to Innovation: Graduates will be capable of driving innovation within organisations by leveraging data to inform strategic decisions, optimise operations, and create value.
+
+5. Ethical and Responsible Practice: Emphasis on data ethics and governance ensures that graduates are mindful of the ethical implications of their work, promoting responsible use of data in society.
+
+Graduates are also well-positioned to pursue further studies, such as a Master of Data Science or related postgraduate qualifications, to deepen their expertise and enhance their career prospects.

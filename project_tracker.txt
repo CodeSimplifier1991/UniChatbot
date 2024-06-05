@@ -1,0 +1,13 @@
+In this file, I aligned the steps it has been taken to create this application.
+
+Initial Version:
+Created a general application with basic functionality that the user can click on any button and the app generates 
+some content by reading the content from a file defined in the project.
+For example when the user clicks on the 'General Entry Requirements', the app reads the file named 'general_entry_requirements.txt' file
+and responds to the user request.
+At the end of each request, the app asks the user wether they need more help on anything else or not.
+If the user input is not defined, they will receive an error message indicating the bot doesn't have the data to respond to the request.
+
+
+Sub Category Version:
+

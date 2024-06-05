@@ -6,6 +6,7 @@ node_modules/
 
 # Ignores the Python virtual environment directory - Enter the name of the Virtual Environment we created (e.g. UniVenv)
 UniVenv/
+UniVenvSubCategory/
 
 # Ignores all log files
 *.log

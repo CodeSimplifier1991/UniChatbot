@@ -1,6 +1,4 @@
 from flask import Flask, request, jsonify, render_template
-
-# This module will be used to upload the API key into the project
 from dotenv import load_dotenv
 import os
 
@@ -34,10 +32,16 @@ def chatbot():
     elif user_input == "2":
         response = read_local_data('course_information.txt')
     elif user_input == "3":
-        response = read_local_data('fees_costs.txt')
+        response = read_local_data('applying_for_a_course.txt')
     else:
         response = "Unfortunately, I haven't been trained on your request, and at this time, I can only help you with defined capabilities."
     return jsonify({"response": response})
+
+@app.route('/get-content', methods=['POST'])
+def get_content():
+    file_request = request.json.get('file')
+    content = read_local_data(file_request)
+    return jsonify({"content": content})
 
 if __name__ == '__main__':
     app.run(debug=True)
