@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@400;600&display=swap');
+
+/* Base font settings for the body */
+body {
+  font-family: 'Proxima Nova', Arial, sans-serif;
+}
+
+/* Container for the chat interface */
+.chat-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Header for the chat interface */
+.chat-header {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for the logo image */
+.chat-logo {
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Container for the chat messages */
+.chat-messages {
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+/* Style for chat buttons */
+.chat-button {
+  display: block;
+  width: calc(100% - 22px);
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+/* Hover effect for chat buttons */
+.chat-button:hover {
+  background-color: #0056b3;
+}
+
+/* Disabled state for chat buttons */
+.chat-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Container for the input and send button */
+.chat-input-container {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+/* Style for the chat input field */
+.chat-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+}
+
+/* Style for the send button */
+.send-button {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+}
+
+/* Hover effect for the send button */
+.send-button:hover {
+  background-color: #0056b3;
+}
+
+/* Disabled state for the send button */
+.send-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Style for selected buttons */
+.selected-button {
+  background-color: #28a745;
+  color: white;
+}
+
+/* Style for user messages */
+.user-message {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #e9ecef;
+  margin: 5px 0;
+}
+
+/* Container for the help buttons */
+.help-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Style for individual help buttons */
+.help-button {
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+/* Hover effect for help buttons */
+.help-button:hover {
+  background-color: #0056b3;
+}
+
+/* Bold text for emphasis */
+.bold-text {
+  font-weight: bold;
+}
