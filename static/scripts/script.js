@@ -52,23 +52,23 @@ function displaySubOptions(option, label) {
   const chatMessages = document.getElementById('chat-messages');
   if (option === 1) {
     chatMessages.innerHTML += `
-          <button class="chat-button" onclick="handleSubOption('General Entry Requirement')">General Entry Requirement</button>
-          <button class="chat-button" onclick="handleSubOption('English Language and Academic Pathway')">English Language and Academic Pathway</button>
-          <button class="chat-button" onclick="handleSubOption('Advanced Standing/Credit Prior Learning')">Advanced Standing/Credit Prior Learning</button>
+          <button class="chat-button" onclick="handleSubOption('entry_requirements_and_pathways', 'General Entry Requirement', 'general_entry_requirements.txt')">General Entry Requirement</button>
+          <button class="chat-button" onclick="handleSubOption('entry_requirements_and_pathways', 'English Language and Academic Pathway', 'english_language_and_academic_pathway.txt')">English Language and Academic Pathway</button>
+          <button class="chat-button" onclick="handleSubOption('entry_requirements_and_pathways', 'Advanced Standing/Credit Prior Learning', 'advanced_standing_credit_prior_learning.txt')">Advanced Standing/Credit Prior Learning</button>
       `;
     userInteraction.category = label;
   } else if (option === 2) {
     chatMessages.innerHTML += `
-          <button class="chat-button" onclick="handleSubOption('Course Overview')">Course Overview</button>
-          <button class="chat-button" onclick="handleSubOption('Careers and Outcomes')">Careers and Outcomes</button>
-          <button class="chat-button" onclick="handleSubOption('Accreditation')">Accreditation</button>
+          <button class="chat-button" onclick="handleSubOption('course_information', 'Course Overview', 'bachelor_of_architectural_design/bachelor_of_architectural_design_course_overview.txt')">Course Overview</button>
+          <button class="chat-button" onclick="handleSubOption('course_information', 'Careers and Outcomes', 'bachelor_of_architectural_design/bachelor_of_architectural_design_career_and_outcomes.txt')">Careers and Outcomes</button>
+          <button class="chat-button" onclick="handleSubOption('course_information', 'Accreditation', 'bachelor_of_architectural_design/bachelor_of_architectural_design_accreditation.txt')">Accreditation</button>
       `;
     userInteraction.category = label;
   } else if (option === 3) {
     chatMessages.innerHTML += `
-          <button class="chat-button" onclick="handleSubOption('How to Apply')">How to Apply</button>
-          <button class="chat-button" onclick="handleSubOption('Application and Acceptance Dates')">Application and Acceptance Dates</button>
-          <button class="chat-button" onclick="handleSubOption('Advanced Standing/Credit Prior Learning')">Advanced Standing/Credit Prior Learning</button>
+          <button class="chat-button" onclick="handleSubOption('applying_for_a_course', 'How to Apply', 'how_to_apply.txt')">How to Apply</button>
+          <button class="chat-button" onclick="handleSubOption('applying_for_a_course', 'Application and Acceptance Dates', 'application_and_acceptance_dates.txt')">Application and Acceptance Dates</button>
+          <button class="chat-button" onclick="handleSubOption('applying_for_a_course', 'Advanced Standing/Credit Prior Learning', 'advanced_standing_credit_prior_learning.txt')">Advanced Standing/Credit Prior Learning</button>
       `;
     userInteraction.category = label;
   }
@@ -76,30 +76,19 @@ function displaySubOptions(option, label) {
 
 /**
  * Function to handle sub-option selection and fetch content
+ * @param {string} folder - The folder containing the selected sub-option
  * @param {string} option - The selected sub-option
+ * @param {string} fileName - The name of the file to read content from
  */
-function handleSubOption(option) {
+function handleSubOption(folder, option, fileName) {
   const chatMessages = document.getElementById('chat-messages');
   chatMessages.innerHTML += `<p>You: <button class="user-message">${option}</button></p>`;
   userInteraction.subcategory = option;
 
-  let fileName = '';
-  if (option === 'General Entry Requirement') {
-    fileName = 'general_entry_requirements.txt';
-  } else if (option === 'English Language and Academic Pathway') {
-    fileName = 'english_language_and_academic_pathway.txt';
-  } else if (option === 'Advanced Standing/Credit Prior Learning') {
-    fileName = 'advanced_standing_credit_prior_learning.txt';
-  } else if (option === 'How to Apply') {
-    fileName = 'how_to_apply.txt';
-  } else if (option === 'Application and Acceptance Dates') {
-    fileName = 'application_and_acceptance_dates.txt';
-  }
-
   fetch('/get-content', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ file: fileName }),
+    body: JSON.stringify({ folder: folder, file: fileName }),
   })
     .then((response) => response.json())
     .then((data) => {
